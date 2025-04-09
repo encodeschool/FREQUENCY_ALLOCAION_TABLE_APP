@@ -1,5 +1,6 @@
 package com.example.frequency_allocation_table.controller;
 
+import com.example.frequency_allocation_table.entity.FrequencyAllocation;
 import com.example.frequency_allocation_table.service.FrequencyAllocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ public class FrequencyController {
     @GetMapping("/table")
     public String getMainPage(Model model) {
 
-        model.addAttribute("frequencies", frequencyAllocationService);
+        model.addAttribute("frequencies", frequencyAllocationService.getAllFrequencies());
 
         return "main/index";
     }

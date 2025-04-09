@@ -57,11 +57,11 @@
     <#if frequencies??>
         <div class="table-responsive mt-3">
             <table class="table table-striped table-bordered">
-                <thead class="align-middle text-center primary-color-all text-white">
+                <thead class="align-middle text-center">
                     <tr>
                         <th colspan="7">Radiofrekvenču sadalījuma tabula</th>
                     </tr>
-                    <tr>
+                    <tr class="primary-color-all text-white">
                         <th>Nr. p. k.</th>
                         <th>ITU sadalījums radiosakaru dienestiem (veidiem) 1. reģionā</th>
                         <th>Sadalījums radiosakaru dienestiem (veidiem) Latvijā</th>
@@ -81,18 +81,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center">Zemāk par 8,3 kHz</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Not Allocated 5.53 5.54</td>
-                        <td>Inductive loop systems. Various applications.</td>
-                        <td>CIV</td>
-                        <td>2.275 kHz Avalanche victim search.</td>
-                        <td>This frequency band is no longer available for new Avalanche victim search equipment.</td>
-                        <td>This frequency band is no longer available for new Avalanche victim search equipment.</td>
-                    </tr>
+                    <#list frequencies as frequency>
+                        <tr>
+                            <td colspan="7" class="text-center">${frequency.bandwidth}</td>
+                        </tr>
+                        <tr>
+                            <td>${frequency.id}</td>
+                            <td>${frequency.ituAllocationRegion1}</td>
+                            <td>${frequency.allocationLatvia}</td>
+                            <td>${frequency.radioSystemsLatvia}</td>
+                            <td>${frequency.internationalUsageInfo}</td>
+                            <td>${frequency.additionalConditions}</td>
+                            <td>${frequency.efis}</td>
+                        </tr>
+                    </#list>
                 </tbody>
             </table>
         </div>
